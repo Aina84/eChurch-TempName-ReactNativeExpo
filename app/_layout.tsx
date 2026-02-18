@@ -1,24 +1,19 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { TamaguiProvider } from '@tamagui/core'
+import '@tamagui/native/setup-zeego'
+import { Stack } from 'expo-router'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { PortalProvider } from 'tamagui'
+import { config } from '../tamagui.config'
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+    <PortalProvider shouldAddRootHost>
+      <SafeAreaProvider>
+        <TamaguiProvider config={config} defaultTheme="dark">
+          <Stack screenOptions={{ headerShown: false }} />
+        </TamaguiProvider>
+      </SafeAreaProvider>
+    </PortalProvider>
+  )
 }

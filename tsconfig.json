@@ -3,10 +3,18 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
+      "@/*": ["./*"] 
+    },
+    "types": [
+      "tamagui",  // ← Garde ça
+      "react",    // ← Ajoute react explicitement
+      "react-native"  // ← Ajoute react-native
+    ],
+    "jsx": "react-native",  // ← Déjà dans expo/tsconfig.base mais explicite
+    "moduleResolution": "bundler",  // ← Important pour Tamagui
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true  // ← Évite les erreurs de types dans node_modules
   },
   "include": [
     "**/*.ts",

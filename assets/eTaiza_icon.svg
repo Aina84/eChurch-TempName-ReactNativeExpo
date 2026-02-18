@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Deep blue background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A1428"/>
+      <stop offset="55%" style="stop-color:#0D1B3E"/>
+      <stop offset="100%" style="stop-color:#152860"/>
+    </linearGradient>
+
+    <!-- Gold shimmer gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F9DF8A"/>
+      <stop offset="40%" style="stop-color:#E8A923"/>
+      <stop offset="100%" style="stop-color:#C47B0A"/>
+    </linearGradient>
+
+    <!-- Gold gradient vertical for cross -->
+    <linearGradient id="goldV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FBE89A"/>
+      <stop offset="50%" style="stop-color:#E8A923"/>
+      <stop offset="100%" style="stop-color:#A86A08"/>
+    </linearGradient>
+
+    <!-- Soft inner light radial -->
+    <radialGradient id="innerLight" cx="50%" cy="42%" r="48%">
+      <stop offset="0%" style="stop-color:#1E3A8A;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#060E22;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Halo glow around cross -->
+    <radialGradient id="haloGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#E8A923;stop-opacity:0.3"/>
+      <stop offset="70%" style="stop-color:#E8A923;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#E8A923;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Gold ring gradient -->
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F9DF8A;stop-opacity:0.9"/>
+      <stop offset="50%" style="stop-color:#E8A923;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#C47B0A;stop-opacity:0.2"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Strong glow for cross center -->
+    <filter id="strongGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Drop shadow for depth -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- BACKGROUND — rounded square                 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <rect width="512" height="512" rx="112" ry="112" fill="url(#bgGrad)"/>
+
+  <!-- Inner atmospheric light -->
+  <rect width="512" height="512" rx="112" ry="112" fill="url(#innerLight)"/>
+
+  <!-- Subtle top shimmer sweep -->
+  <ellipse cx="256" cy="100" rx="220" ry="100" fill="#2A4DB0" opacity="0.12"/>
+
+  <!-- Bottom shadow depth -->
+  <ellipse cx="256" cy="460" rx="200" ry="60" fill="#000" opacity="0.25"/>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- DECORATIVE RING (behind cross)              -->
+  <!-- ═══════════════════════════════════════════ -->
+  <circle cx="256" cy="248" r="148" fill="none" stroke="url(#ringGrad)" stroke-width="1.2" opacity="0.5"/>
+  <circle cx="256" cy="248" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="0.6" opacity="0.3"/>
+
+  <!-- Large halo glow -->
+  <circle cx="256" cy="248" r="170" fill="url(#haloGrad)"/>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CHURCH ARCHITECTURE                         -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <!-- Church base walls -->
+  <rect x="158" y="310" width="196" height="130" rx="0" ry="0" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" opacity="0.5"/>
+
+  <!-- Church door arch -->
+  <path d="M224,440 L224,388 Q224,362 256,362 Q288,362 288,388 L288,440"
+        fill="none" stroke="url(#goldGrad)" stroke-width="2.5" opacity="0.6"/>
+
+  <!-- Church roof triangle -->
+  <polygon points="256,178 148,314 364,314"
+           fill="none" stroke="url(#goldGrad)" stroke-width="2.5" opacity="0.55"/>
+
+  <!-- Roof ridge cap -->
+  <line x1="148" y1="314" x2="364" y2="314" stroke="url(#goldGrad)" stroke-width="2.5" opacity="0.5"/>
+
+  <!-- Side windows left -->
+  <rect x="172" y="328" width="38" height="50" rx="4" ry="4"
+        fill="none" stroke="url(#goldGrad)" stroke-width="1.8" opacity="0.45"/>
+  <path d="M172,353 Q172,328 191,328 Q210,328 210,353"
+        fill="none" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Side windows right -->
+  <rect x="302" y="328" width="38" height="50" rx="4" ry="4"
+        fill="none" stroke="url(#goldGrad)" stroke-width="1.8" opacity="0.45"/>
+  <path d="M302,353 Q302,328 321,328 Q340,328 340,353"
+        fill="none" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CROSS — main focal point                    -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <!-- Cross glow bloom -->
+  <rect x="240" y="80" width="32" height="220" rx="16" ry="16" fill="#E8A923" opacity="0.08" filter="url(#strongGlow)"/>
+  <rect x="168" y="132" width="176" height="32" rx="16" ry="16" fill="#E8A923" opacity="0.08" filter="url(#strongGlow)"/>
+
+  <!-- Cross vertical bar -->
+  <rect x="242" y="84" width="28" height="216" rx="10" ry="10" fill="url(#goldV)" filter="url(#glow)"/>
+
+  <!-- Cross horizontal bar -->
+  <rect x="170" y="136" width="172" height="28" rx="10" ry="10" fill="url(#goldV)" filter="url(#glow)"/>
+
+  <!-- Cross center highlight jewel -->
+  <circle cx="256" cy="150" r="18" fill="url(#goldGrad)" filter="url(#strongGlow)" opacity="0.85"/>
+  <circle cx="256" cy="150" r="10" fill="#FDF0B0" opacity="0.9"/>
+  <circle cx="252" cy="146" r="3.5" fill="#fff" opacity="0.7"/>
+
+  <!-- Steeple top cap -->
+  <polygon points="256,60 238,90 274,90" fill="url(#goldGrad)" filter="url(#glow)"/>
+  <rect x="248" y="48" width="16" height="18" rx="4" ry="4" fill="url(#goldGrad)" filter="url(#glow)"/>
+
+  <!-- Steeple pinnacle tip -->
+  <polygon points="256,34 250,52 262,52" fill="#F9DF8A"/>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CORNER ORNAMENTS (subtle)                   -->
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- Top-left ornament -->
+  <path d="M60,90 Q60,60 90,60" fill="none" stroke="url(#goldGrad)" stroke-width="1.2" opacity="0.3"/>
+  <!-- Top-right ornament -->
+  <path d="M452,90 Q452,60 422,60" fill="none" stroke="url(#goldGrad)" stroke-width="1.2" opacity="0.3"/>
+  <!-- Bottom-left ornament -->
+  <path d="M60,422 Q60,452 90,452" fill="none" stroke="url(#goldGrad)" stroke-width="1.2" opacity="0.3"/>
+  <!-- Bottom-right ornament -->
+  <path d="M452,422 Q452,452 422,452" fill="none" stroke="url(#goldGrad)" stroke-width="1.2" opacity="0.3"/>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- BORDER — gold frame                         -->
+  <!-- ═══════════════════════════════════════════ -->
+  <rect x="6" y="6" width="500" height="500" rx="108" ry="108"
+        fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.35"/>
+</svg>
