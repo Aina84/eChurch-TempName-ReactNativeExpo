@@ -1,11 +1,12 @@
 import { Tabs } from 'expo-router';
-import { useTheme } from 'tamagui';
+import { PortalProvider, useTheme } from 'tamagui';
 import { Home, User, Settings, Bell, Menu, Users2, PiggyBank, ListTodo } from '@tamagui/lucide-icons';
 
 export default function TabLayout() {
   const theme = useTheme();
 
   return (
+    <PortalProvider shouldAddRootHost>
     <Tabs
       screenOptions={{
         // Style des onglets
@@ -75,5 +76,6 @@ export default function TabLayout() {
         }}
       />
     </Tabs>
+    </PortalProvider>
   );
 }
