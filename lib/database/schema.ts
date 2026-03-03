@@ -15,6 +15,7 @@ export const sheeps = sqliteTable('sheeps', {
   adress: text('adress').notNull(),
   description: text('description').notNull(),
   role: text('role'),
+  sexe: text('sexe').notNull(),
   createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 })
 

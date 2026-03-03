@@ -18,9 +18,7 @@ import { Header } from "./components/Header";
 import { RecentActivity } from "./components/RecentActivity";
 import { StatCard } from "./components/StatCard";
 
-import { AddSheepCard } from "./components/AddSheepCard";
-
-
+import { AddSheepCard } from "@/components/shared/AddSheepCard";
 
 export default function DashboardScreen() {
   const [refreshing] = useState(false);

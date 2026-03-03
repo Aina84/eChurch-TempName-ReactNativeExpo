@@ -25,9 +25,11 @@ type PersonForm = {
   adress: string
   description: string
   role: string
+  sexe: string
 }
 
 const ROLES = ['Choral', 'Securité', 'Interceseur', 'Accueil', 'Diakona', 'Assistant', 'Staff', 'Tsotra']
+const SEXES = ['Masculin', 'Feminin']
 
 type AddSheepCardProps = {
   visible: boolean
@@ -43,6 +45,7 @@ export function AddSheepCard({ visible, onClose, onUserAdded }: AddSheepCardProp
     adress: '',
     description: '',
     role: '',
+    sexe: ''
   })
   const [errors, setErrors] = useState<Partial<PersonForm>>({})
 
@@ -52,12 +55,13 @@ export function AddSheepCard({ visible, onClose, onUserAdded }: AddSheepCardProp
     if (!form.contact.trim()) newErrors.contact = 'Le contact est requis'
     if (!form.adress.trim()) newErrors.adress = "L'adresse est requise"
     if (!form.description.trim()) newErrors.description = 'La description est requise'
+    if (!form.sexe.trim()) newErrors.sexe = 'Le sexe est requis'
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
 
   const resetForm = () => {
-    setForm({ name: '', contact: '', adress: '', description: '', role: '' })
+    setForm({ name: '', contact: '', adress: '', description: '', role: '', sexe: '' })
     setErrors({})
   }
 
@@ -72,9 +76,13 @@ export function AddSheepCard({ visible, onClose, onUserAdded }: AddSheepCardProp
         adress: form.adress,
         description: form.description,
         role: form.role || null,
+        sexe: form.sexe,
       })
 
       console.log('Succès ! La personne a été ajoutée avec succès')
+
+      const dataTest = await db.select().from(sheeps)
+      console.log(dataTest);
 
       resetForm()
       onClose()
@@ -284,6 +292,88 @@ export function AddSheepCard({ visible, onClose, onUserAdded }: AddSheepCardProp
                               </Select.ItemIndicator>
                             </Select.Item>
                           ))}
+                        </Select.Group>
+                      </Select.Viewport>
+
+                      <Select.ScrollDownButton
+                        alignItems="center"
+                        justifyContent="center"
+                        position="relative"
+                        width="100%"
+                        height="$3"
+                      >
+                        <YStack zIndex={10}>
+                          <ChevronDown size={20} />
+                        </YStack>
+                      </Select.ScrollDownButton>
+                    </Select.Content>
+                  </Select>
+                </YStack>
+                {/* sexe */}
+                <YStack gap="$1">
+                  <Label color="$color" fontSize="$3" fontWeight="600">
+                    Sexe <Text color="$gray9">(optionnel)</Text>
+                  </Label>
+                  <Select
+                    value={form.sexe}
+                    onValueChange={setField('sexe')}
+                  >
+                    <Select.Trigger iconAfter={ChevronDown}>
+                      <Select.Value placeholder="Sélectionner un genre..." />
+                    </Select.Trigger>
+
+                    <Adapt when="sm" platform="touch">
+                      <Sheet
+                        modal
+                        dismissOnSnapToBottom
+                      >
+                        <Sheet.Frame>
+                          <Sheet.Handle />
+                          <Adapt.Contents />
+                        </Sheet.Frame>
+                        <Sheet.Overlay
+                          enterStyle={{ opacity: 0 }}
+                          exitStyle={{ opacity: 0 }}
+                        />
+                      </Sheet>
+                    </Adapt>
+
+                    <Select.Content zIndex={200000}>
+                      <Select.ScrollUpButton
+                        alignItems="center"
+                        justifyContent="center"
+                        position="relative"
+                        width="100%"
+                        height="$3"
+                      >
+                        <YStack zIndex={10}>
+                          <ChevronUp size={20} />
+                        </YStack>
+                      </Select.ScrollUpButton>
+
+                      <Select.Viewport minWidth={200}>
+                        <Select.Group>
+                          <Select.Label>Options</Select.Label>
+                          <Select.Item
+                            index={0}
+                            key={0}
+                            value={"homme"}
+                          >
+                            <Select.ItemText>Homme</Select.ItemText>
+                            <Select.ItemIndicator marginLeft="auto">
+                              <Check size={16} />
+                            </Select.ItemIndicator>
+                          </Select.Item>
+                          <Select.Item
+                            index={1}
+                            key={1}
+                            value={"femme"}
+                          >
+                            <Select.ItemText>Femme</Select.ItemText>
+                            <Select.ItemIndicator marginLeft="auto">
+                              <Check size={16} />
+                            </Select.ItemIndicator>
+                          </Select.Item>
                         </Select.Group>
                       </Select.Viewport>
 
