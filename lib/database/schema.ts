@@ -22,15 +22,27 @@ export const sheeps = sqliteTable('sheeps', {
 
 export const reports = sqliteTable('reports', {
   id: integer('id').primaryKey({ autoIncrement: true }),
-  type: text('type').notNull(),
-  title: text('title').notNull(),
+  title: text('title'),
+  type: text('type'),
   desc: text('description'),
-  date: text('date').notNull(),
-  offering: integer('offering').notNull(),
+  date: text('date'),
+  offering: text('offering'),
   dim: integer('dim').default(0),
   totalPresent: integer('present').default(0),
   totalNews: integer('news').default(0),
-  author: text('auteur')
+  author: text('auteur')  
+})
+export const rapports = sqliteTable('rapports', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  title: text('title'),
+  type: text('type'),
+  desc: text('description'),
+  date: text('date'),
+  offering: text('offering'),
+  dim: integer('dim').default(0),
+  totalPresent: integer('present').default(0),
+  totalNews: integer('news').default(0),
+  author: text('auteur')  
 })
 
 export const activities = sqliteTable('activities', {
