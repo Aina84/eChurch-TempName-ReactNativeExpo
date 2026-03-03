@@ -10,10 +10,17 @@
       "breakpoints": true
     },
     {
-      "idx": 1,
+      "idx": 2,
       "version": "6",
-      "when": 1772485638081,
-      "tag": "0001_sharp_ultragirl",
+      "when": 1772557905698,
+      "tag": "0002_public_sabra",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1772559141602,
+      "tag": "0003_whole_nova",
       "breakpoints": true
     }
   ]

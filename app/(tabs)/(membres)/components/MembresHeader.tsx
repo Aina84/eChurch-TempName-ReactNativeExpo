@@ -3,15 +3,28 @@
  * Stack: React Native Expo + Tamagui
  */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Animated, StyleSheet, Text, View } from "react-native";
 import { COLORS } from "../../../utils/styles";
+import { db } from "@/lib/database/db";
+import { sheeps } from "@/lib/database/schema";
+
 
 interface MembresHeaderProps {
   headerAnim: Animated.Value;
 }
 
 export function MembresHeader({ headerAnim }: MembresHeaderProps) {
+  const [totalMembers, setTotalMembers] = useState<Number>(0)
+
+  useEffect(()=>{
+    const getMembersCount = async () => {
+      const total = await db.$count(sheeps)
+      setTotalMembers(total)
+    }
+    getMembersCount()
+  }, [])
+  
   return (
     <Animated.View style={[styles.header, { opacity: headerAnim }]}>
       <View style={styles.headerRow}>
@@ -20,7 +33,7 @@ export function MembresHeader({ headerAnim }: MembresHeaderProps) {
           <Text style={styles.headerSub}>Registre de l'assemblée</Text>
         </View>
         <View style={styles.countBadge}>
-          <Text style={styles.countText}>247 brebis</Text>
+          <Text style={styles.countText}>Nombres: {totalMembers.valueOf()}</Text>
         </View>
       </View>
     </Animated.View>

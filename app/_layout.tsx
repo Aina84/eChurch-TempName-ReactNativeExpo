@@ -8,8 +8,8 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <TamaguiProvider config={config} defaultTheme="dark">
         <PortalProvider>
-          <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack screenOptions={{headerShown:false}}>
+            <Stack.Screen name='index' options={{ headerShown: false }} />
           </Stack>
         </PortalProvider>
       </TamaguiProvider>

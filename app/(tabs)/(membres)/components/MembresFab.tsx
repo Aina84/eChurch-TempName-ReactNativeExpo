@@ -8,10 +8,10 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { COLORS } from "../../../utils/styles";
 
-export function MembresFab() {
+export function MembresFab({onPress}: {onPress: ()=>void}) {
   return (
     <View style={styles.fabWrap}>
-      <Pressable style={styles.fab}>
+      <Pressable style={styles.fab} onPress={onPress}>
         <LinearGradient
           colors={[COLORS.goldLight, COLORS.goldDim]}
           style={styles.fabGrad}
@@ -25,7 +25,7 @@ export function MembresFab() {
 }
 
 const styles = StyleSheet.create({
-  fabWrap: { position: "absolute", bottom: 100, left: 20, right: 20 },
+  fabWrap: { position: "relative", bottom: 0 },
   fab: { borderRadius: 16, overflow: "hidden" },
   fabGrad: { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 8, paddingVertical: 16 },
   fabIcon: { fontSize: 18 },

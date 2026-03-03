@@ -19,16 +19,14 @@ export default function index() {
   
   const { success, error } = useMigrations(db, migration);
   
-  if (error) {
-    return (
-      <View><Text>{error.message}</Text></View>
-      );
+  if (success) {
+    console.log('Migration réussie');
   }
-
   if (!success) {
-    return (
-      <ActivityIndicator/>
-    );
+    console.log('Migration échouée');
+  }
+  if (error) {
+    console.log(error);
   }
 
   return (

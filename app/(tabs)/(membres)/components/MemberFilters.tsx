@@ -38,8 +38,8 @@ export function MemberFilters({ filters, activeFilter, setActiveFilter }: Member
 const styles = StyleSheet.create({
   filterRow: { paddingHorizontal: 20, gap: 8, paddingBottom: 16 },
   filterChip: {
-    paddingHorizontal: 16, paddingVertical: 8, borderRadius: 20,
-    borderWidth: 1, borderColor: COLORS.borderBlue, backgroundColor: "transparent",
+    paddingHorizontal: 16, paddingVertical: 10, borderRadius: 20,
+    borderWidth: 1, borderColor: COLORS.borderBlue, backgroundColor: "transparent"
   },
   filterChipActive: { backgroundColor: COLORS.gold, borderColor: COLORS.gold },
   filterText: { fontSize: 12, fontWeight: "600", color: COLORS.textSecondary },

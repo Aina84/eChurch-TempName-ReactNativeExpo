@@ -1,8 +1,8 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "14d3af77-6f8b-4cc1-9e7a-d35452557e2a",
-  "prevId": "0aa1e77c-e863-4b16-8a52-65f7f2eeb2fb",
+  "id": "9299d5bf-3ce1-4867-90a6-f1039510e406",
+  "prevId": "14d3af77-6f8b-4cc1-9e7a-d35452557e2a",
   "tables": {
     "activities": {
       "name": "activities",
@@ -160,7 +160,7 @@
           "name": "sexe",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "autoincrement": false
         },
         "created_at": {

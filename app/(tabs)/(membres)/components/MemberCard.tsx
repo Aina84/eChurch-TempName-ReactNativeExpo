@@ -1,15 +1,17 @@
-/**
- * eTaiza – Member Card Component
- * Stack: React Native Expo + Tamagui
- */
-
 import React, { useEffect, useRef } from "react";
 import { Animated, Pressable, StyleSheet, Text, View } from "react-native";
 import { COLORS } from "../../../utils/styles";
 
-export interface Member {
-  id: string; name: string; role: string;
-  emoji: string; color: string; active: boolean; leader: boolean;
+export type Member = {
+    id: number;
+    name: string;
+    contact: string;
+    adress: string;
+    description: string;
+    role: string | null;
+    sexe: string | null;
+    status: string | null;
+    createdAt: Date | null;
 }
 
 interface MemberCardProps {
@@ -18,6 +20,7 @@ interface MemberCardProps {
 }
 
 export function MemberCard({ item, index }: MemberCardProps) {
+  const emoji = item.sexe=="homme"? '👨':'👩';
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(20)).current;
 
@@ -35,23 +38,19 @@ export function MemberCard({ item, index }: MemberCardProps) {
   return (
     <Animated.View style={{ opacity: fadeAnim, transform: [{ translateY: slideAnim }, { scale: pressAnim }] }}>
       <Pressable onPressIn={onIn} onPressOut={onOut} style={styles.memberCard}>
-        <View style={[styles.memberAvatar, { backgroundColor: item.color }]}>
-          <Text style={styles.memberEmoji}>{item.emoji}</Text>
+        <View style={[styles.memberAvatar, { backgroundColor: "rgba(152,123,160,80)" }]}>
+          <Text style={styles.memberEmoji}>{emoji}</Text>
         </View>
         <View style={styles.memberInfo}>
           <Text style={styles.memberName}>{item.name}</Text>
           <Text style={styles.memberRole}>{item.role}</Text>
+          <Text style={styles.memberRole}>{item.adress}</Text>
           <View style={styles.memberBadges}>
-            <View style={[styles.badge, item.active ? styles.badgeActive : styles.badgeInactive]}>
-              <Text style={[styles.badgeText, { color: item.active ? COLORS.success : COLORS.danger }]}>
-                {item.active ? "Actif" : "Inactif"}
+            <View style={[styles.badge, item.status=='actif' ? styles.badgeActive : styles.badgeInactive]}>
+              <Text style={[styles.badgeText, { color: item.status=="actif" ? COLORS.success : COLORS.danger }]}>
+                {item.status=="actif" ? "Actif" : "Inactif"}
               </Text>
             </View>
-            {item.leader && (
-              <View style={styles.badgeLeader}>
-                <Text style={[styles.badgeText, { color: COLORS.gold }]}>Leader</Text>
-              </View>
-            )}
           </View>
         </View>
         <Text style={styles.memberArrow}>›</Text>
